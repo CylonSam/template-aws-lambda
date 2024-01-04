@@ -4,7 +4,8 @@ variable "region" {
   default     = "us-east-1"
 }
 
-variable "example_kinesis_arn" {
-  description = "The ARN of the Kinesis stream to read events from"
-  type        = string
-}
+# variable "example_kinesis_arn" {
+#   description = "The ARN of the Kinesis stream to read events from"
+#   type        = string
+#   default = "example-kinesis-arn"
+# }

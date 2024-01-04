@@ -1,5 +1,5 @@
-# template-aws-lambda
-Boilerplate for an AWS lambda (python) using opentofu for deployment
+# Template for AWS Lambda
+Boilerplate code for an AWS lambda (python) using opentofu for deployment
 
 ## Tech
 - Python 3.11

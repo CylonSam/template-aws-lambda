@@ -1,0 +1,42 @@
+name: "Template AWS lambdas"
+
+on: workflow_dispatch
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  opentofu:
+    name: "OpenTofu"
+    runs-on: ubuntu-latest
+    environment: production
+
+    defaults:
+      run:
+        shell: bash
+        working-directory: ./opentofu
+    
+    steps:
+    - uses: actions/checkout@v3
+    - uses: opentofu/setup-opentofu@v1
+
+    - name: Configure AWS Credentials
+      uses: aws-actions/configure-aws-credentials@v4
+      with:
+        role-to-assume: arn:aws:iam::123456789100:role/my-github-actions-role
+        aws-region: us-east-1
+
+    - name: OpenTofu Init
+      id: init
+      run: tofu init
+
+    - name: OpenTofu Plan
+      id: plan
+      run: tofu plan -no-color
+      continue-on-error: true
+
+    # - name: OpenTofu Apply
+    #   id: apply
+    #   run: tofu apply
+      
